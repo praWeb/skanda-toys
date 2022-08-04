@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "export": "npm run build && next start"
+    "export": "npm run build && next export"
   },
   "dependencies": {
     "@portabletext/react": "^1.0.6",

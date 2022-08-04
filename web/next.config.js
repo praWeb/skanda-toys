@@ -3,7 +3,8 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   images: {
-		domains: ['cdn.sanity.io']
+		domains: ['cdn.sanity.io'],
+    unoptimized: true
 	},
   // Make sure that your node enviroment supports async/await
   exportPathMap: async function (defaultPathMap) {
