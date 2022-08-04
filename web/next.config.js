@@ -1,11 +1,17 @@
+const client = require('./client')
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   images: {
-		domains: ['cdn.sanity.io'],
-    unoptimized: true
+		domains: ['cdn.sanity.io']
 	},
+  experimental: {
+    images: {
+      unoptimized: true,
+    },
+  },
   // Make sure that your node enviroment supports async/await
   exportPathMap: async function (defaultPathMap) {
   
@@ -20,7 +26,7 @@ const nextConfig = {
           (acc, slug) => ({
             '/': { page: '/' },
             ...acc,
-            [`/${slug}`]: { page: '/${slug}', query: { slug } }
+            [`/${slug}`]: { page: "/[slug]", query: { slug } }
           }),
           {}
         )
