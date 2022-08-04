@@ -21,4 +21,4 @@ yarn-error.log*
 # backups
 *.tar.gz
 
-/.next
+*/.next

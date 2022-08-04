@@ -15,8 +15,12 @@ export default {
       }
     },
     {
-      name: 'content',
+      name: 'description',
       type: 'text'
+    },
+    {
+      name: 'image',
+      type: 'image'
     }
   ]
 }
