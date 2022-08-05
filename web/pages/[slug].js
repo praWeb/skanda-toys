@@ -42,7 +42,7 @@ const configuredSanityClient = sanityClient({
  * https://www.simeongriggs.dev/nextjs-sanity-slug-patterns
  */
 export async function getStaticPaths() {
-  const allSlugsQuery = groq`*[_type == "toy"]`
+  const allSlugsQuery = groq`*[defined(slug.current)][].slug.current`
   const pages = await getClient().fetch(allSlugsQuery)
 
   return {
