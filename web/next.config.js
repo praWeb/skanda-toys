@@ -18,11 +18,11 @@ const nextConfig = {
     const path = await client
       // get all the posts and return those with slugs
       .fetch('*[_type == "toy"].slug.current')
-      .then(data => {
+      .then(data => 
         // use reduce to build an object with routes
         // and select the blog.js file, and send in the
         // correct query paramater.
-        const routes = data.reduce(
+        data.reduce(
           (acc, slug) => ({
             '/': { page: '/' },
             ...acc,
@@ -31,8 +31,7 @@ const nextConfig = {
           }),
           {}
         )
-        console.log(routes)
-      })
+      )
       .catch(console.error)
     return path
   }
