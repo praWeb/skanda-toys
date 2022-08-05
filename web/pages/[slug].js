@@ -19,20 +19,20 @@ const configuredSanityClient = sanityClient({
  * If we're in "preview mode" and have multiple documents, return the draft
  */
  function filterDataToSingleItem(data, preview) {
-    if (!Array.isArray(data)) {
-      return data
-    }
-  
-    if (data.length === 1) {
-      return data[0]
-    }
-  
-    if (preview) {
-      return data.find((item) => item._id.startsWith(`drafts.`)) || data[0]
-    }
-  
+  if (!Array.isArray(data)) {
+    return data
+  }
+
+  if (data.length === 1) {
     return data[0]
   }
+
+  if (preview) {
+    return data.find((item) => item._id.startsWith(`drafts.`)) || data[0]
+  }
+
+  return data[0]
+}
 
   /**
  * Makes Next.js aware of all the slugs it can expect at this route
@@ -42,12 +42,12 @@ const configuredSanityClient = sanityClient({
  * https://www.simeongriggs.dev/nextjs-sanity-slug-patterns
  */
 export async function getStaticPaths() {
-  const allSlugsQuery = groq`*[defined(slug.current)][].slug.current`
+  const allSlugsQuery = groq`*[_type == "toy"]`
   const pages = await getClient().fetch(allSlugsQuery)
 
   return {
     paths: pages.map((slug) => `/${slug}`),
-    fallback: false,
+    fallback: true,
   }
 }
 
