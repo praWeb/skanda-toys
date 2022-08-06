@@ -1,5 +1,5 @@
 [build]
-command = "npm run build && npm run start"
+command = "npm run export"
 
 [[plugins]]
 package = "netlify-plugin-cache-nextjs"
