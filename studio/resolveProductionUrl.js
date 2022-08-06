@@ -2,7 +2,7 @@
 const previewSecret = 'j8heapkqy4rdz6kudrvsc7ywpvfhrv022abyx5zgmuwpc1xv'
 
 // Replace `remoteUrl` with your deployed Next.js site
-const remoteUrl = `https://skanda-toys.netlify.app/`
+const remoteUrl = `https://skanda-toys.vercel.app/`
 const localUrl = `http://localhost:3000`
 
 export default function resolveProductionUrl(doc) {
