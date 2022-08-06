@@ -3,8 +3,9 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   images: {
-		domains: ['cdn.sanity.io'],
-    loader: 'imgix'
+		//domains: ['cdn.sanity.io'],
+    loader: 'imgix',
+    path: 'https://skanda-toys.imgix.net'
 	},
   // experimental: {
   //   images: {
