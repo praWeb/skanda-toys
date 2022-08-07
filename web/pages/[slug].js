@@ -1,18 +1,9 @@
 import React from 'react'
 import {groq} from 'next-sanity'
-
 import {usePreviewSubscription} from '../lib/sanity'
 import {getClient} from '../lib/sanity.server'
 
-import sanityClient from '@sanity/client';
-import Image from 'next/image'
-import { useNextSanityImage } from 'next-sanity-image';
-
-const configuredSanityClient = sanityClient({
-	projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
-	dataset: process.env.NEXT_PUBLIC_SANITY_DATASET,
-	useCdn: true
-});
+import imgixImage from './../utilities/imgix-image'
 
 /**
  * Helper function to return the correct version of the document
@@ -101,11 +92,6 @@ export async function getStaticProps({params, preview = false}) {
 
   // Client-side uses the same query, so we may need to filter it down again
   const page = filterDataToSingleItem(previewData, preview)
-  
-  const imageProps = useNextSanityImage(
-    configuredSanityClient,
-		page?.image?.asset?._ref
-  );
 
   // Notice the optional?.chaining conditionals wrapping every piece of content? 
   // This is extremely important as you can't ever rely on a single field
@@ -116,7 +102,7 @@ export async function getStaticProps({params, preview = false}) {
       {page?.title && <h1>{page.title}</h1>}
       {page?.description && <p>{page.description}</p>}
       {page?.image && 
-        <Image {...imageProps} layout="responsive" sizes="(max-width: 800px) 100vw, 800px" />
+        <img src={imgixImage(page.image, 400, 900)} layout="fill" sizes="(max-width: 800px) 100vw, 800px" />
       }
     </div>
   )
