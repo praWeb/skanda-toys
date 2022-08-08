@@ -47,7 +47,7 @@ export async function getStaticPaths() {
 
   return {
     paths: pages.map((slug) => `/${slug}`),
-    fallback: true,
+    fallback: blocking,
   }
 }
 
@@ -81,7 +81,8 @@ export async function getStaticProps({params, preview = false}) {
       preview,
       // Pass down the initial content, and our query
       data: {page, query, queryParams}
-    }
+    },
+    revalidate: 3600
   }
 }
 
