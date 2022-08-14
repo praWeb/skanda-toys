@@ -1,11 +1,22 @@
 export default {
   name: 'person',
   type: 'document',
-  title: 'Parent/Gaurdian Name',
+  title: 'Parent records',
   fields: [
     {
       name: 'name',
-      type: 'string'
+      type: 'string',
+      title: 'Parent/Gaurdian name'
+    },
+    {
+      name: 'email',
+      type: 'email',
+      title: 'Email Address'
+    },
+    {
+      name: 'password',
+      type: 'string',
+      title: 'Password'
     }
   ]
 }
