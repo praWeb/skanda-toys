@@ -47,7 +47,7 @@ export async function getStaticPaths() {
 
   return {
     paths: pages.map((slug) => `/${slug}`),
-    fallback: blocking,
+    fallback: 'blocking',
   }
 }
 
